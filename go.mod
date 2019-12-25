@@ -10,7 +10,7 @@ require (
 	github.com/int128/oauth2cli v1.7.0
 	github.com/k0kubun/go-ansi v0.0.0-20180517002512-3bf9e2903213
 	github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b
-	github.com/nmrshll/go-cp v0.0.0-20180115193924-61436d3b7cfa
+	github.com/nmrshll/go-cp v0.0.0-20180115193924-61436d3b7cfa // indirect
 	github.com/pierrec/xxHash v0.1.5
 	github.com/pkg/browser v0.0.0-20180916011732-0a3d74bf9ce4
 	github.com/sirupsen/logrus v1.4.2

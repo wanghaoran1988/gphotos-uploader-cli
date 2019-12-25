@@ -52,6 +52,7 @@ func (job *EnqueuedJob) albumID() string {
 	}
 
 	album, err := job.PhotosService.GetOrCreateAlbumByName(job.AlbumName)
+	log.Infof("album :%s, name: %s",album,job.AlbumName)
 	if err != nil {
 		job.Logger.Errorf("Album creation failed: name=%s, error=%s", job.AlbumName, err)
 		return ""

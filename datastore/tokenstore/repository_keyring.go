@@ -30,7 +30,15 @@ type KeyringRepository struct {
 //	WinCredBackend       BackendType = "wincred"
 //	FileBackend          BackendType = "file"
 //	PassBackend          BackendType = "pass"
+//	PassBackend          BackendType = "localfile"
 func NewKeyringRepository(backend string, promptFunc *keyring.PromptFunc, keyringDir string) (*KeyringRepository, error) {
+	if backend == "localfile"{
+		kr := LocalKeyring{
+			fileDir: keyringDir,
+			keyPair: map[string]keyring.Item{},
+		}
+		return &KeyringRepository{&kr}, nil
+	}
 	keyringConfig := defaultConfig(keyringDir)
 	if backend != "" && backend != "auto" {
 		keyringConfig.AllowedBackends = append(keyringConfig.AllowedBackends, keyring.BackendType(backend))

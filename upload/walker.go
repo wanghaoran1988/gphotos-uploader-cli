@@ -31,6 +31,7 @@ func (job *UploadFolderJob) getItemToUploadFn(reqs *[]UploadItem, logger log.Log
 		// configuration file. It uses relative Path from the source folder Path to facilitate
 		// then set up of includePatterns and excludePatterns.
 		relativePath := filesystem.RelativePath(job.SourceFolder, fp)
+		logger.Infof("sourceFolder: %s, relativePath: %s, fp: %s", job.SourceFolder,relativePath,fp)
 		if !job.Filter.IsAllowed(relativePath) {
 			logger.Infof("Not allowed by config: %s: skipping file...", fp)
 			return nil
@@ -45,7 +46,7 @@ func (job *UploadFolderJob) getItemToUploadFn(reqs *[]UploadItem, logger log.Log
 			return nil
 		}
 
-		logger.Infof("Found item to upload: %s", fp)
+		logger.Infof("Found item to upload: %s to album: %s", fp,job.albumName(relativePath))
 
 		// set file upload Options depending on folder upload Options
 		*reqs = append(*reqs, UploadItem{
